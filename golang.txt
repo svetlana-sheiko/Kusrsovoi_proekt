@@ -1,0 +1,30 @@
+func romanToInt(s string) int {
+	sum := 0
+	n := []string{"I", "V", "X", "L", "C", "D", "M"}
+	m := []int{1, 5, 10, 50, 100, 500, 1000}
+
+	k := 0
+	for i := k; i < len(s); i++ {
+		if k > 0 {
+			if getIndex(string(s[i-1]), n) < getIndex(string(s[i]), n) {
+				sum += (m[getIndex(string(s[i]), n)] - m[getIndex(string(s[i-1]), n)] - m[getIndex(string(s[i-1]), n)])
+				k += 2
+			} else {
+				sum += m[getIndex(string(s[i]), n)]
+				k++
+			}
+		} else {
+			sum += m[getIndex(string(s[i]), n)]
+			k++
+		}
+	}
+	return sum
+}
+func getIndex(s string, n []string) int {
+	for i := 0; i < len(n); i++ {
+		if s == n[i] {
+			return i
+		}
+	}
+	return -1
+}
