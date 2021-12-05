@@ -1,0 +1,30 @@
+syntax ="proto3";
+
+package go.micro.srv.user;
+
+option go_package="/user";
+
+service UserService {
+rpc CreateUser(User) returns (Response) {}
+rpc DeleteUser(Id) returns (Response) {}
+rpc GetById(Id) returns (Response) {}
+rpc GetAll(Empty) returns (Response) {}
+rpc SignIn(SignInInfo) returns (Response) {}
+}
+message Empty{}
+message User {
+string name=1;
+string password=2;
+string email=3;
+string id=4;
+}
+message SignInInfo {
+string name=1;
+string password=2;
+}
+message Response {
+string response=1;
+}
+message Id {
+int32 id=1;
+}
