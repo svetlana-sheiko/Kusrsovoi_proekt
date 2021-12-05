@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package go.micro.srv.book;
+
+option go_package ="/book";
+
+service LibraryService {
+rpc CreateBook (Request) returns (Empty) {}
+rpc GetBook(Request) returns (Empty) {}
+rpc GiveBook(Request) returns (Empty) {}
+}
+message Request {
+Book book=1;
+string token=2;
+}
+message Book {
+string name=1;
+string author=2;
+int32 year=3;
+bool available=4;
+int32 id=5;
+}
+message Empty{
+string resp=1;
+}
