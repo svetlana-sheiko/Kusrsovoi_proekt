@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package go.micro.srv.info;
+
+option go_package ="/info";
+
+service InfoService {
+rpc Create(Empty) returns (Response) {}
+rpc Get(Empty) returns (Response) {}
+rpc Give(Empty) returns (Response) {}
+rpc Home(Empty) returns (Response) {}
+}
+message Response {
+string response=1;
+}
+message Empty {
+}
